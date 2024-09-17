@@ -2,7 +2,6 @@
 This repository contains solutions to 28 SSIS (SQL Server Integration Services) exercises from the Wise Owl website. Each exercise tackles various SSIS concepts and functionalities, and the solutions provided here are aimed at reinforcing those skills.
 
 ## Table of Contents
-## Table of Contents
 1. [Exercise 1: Basic Data Flow](#exercise-1-basic-data-flow)
 2. [Exercise 2: Adding a Conditional Split](#exercise-2-adding-a-conditional-split)
 3. [Exercise 3: Looping through Files](#exercise-3-looping-through-files)
