@@ -1,0 +1,1633 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/17/2024 1:29:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-T4KINTS"
+  DTS:CreatorName="DESKTOP-T4KINTS\Ahmed Sayed"
+  DTS:DTSID="{DEFA1264-89AB-47B9-865B-69773124E682}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Scary coasters"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{59606414-1F6F-4037-9F11-561CDF6A4182}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0DAE2C05-F847-41AF-AF64-A14DB592BD51}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (25)\Life is a Rollercoaster.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D17A2DC2-E37D-4117-BF8E-A150FA4CA26A}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (25)\Life is a Rollercoaster.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2780EBB5-74A8-4557-A7AB-122EB7DC42AF}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (25)\newcoasters.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Roller Coaster"
+              DTS:DTSID="{F2241906-434C-4600-8C47-501B462EE296}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Amusement Park"
+              DTS:DTSID="{B10F5EB8-5C89-43A9-9B41-F1382369E4E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Type"
+              DTS:DTSID="{CD12A1EF-7ADE-4DFC-AA57-455340E72750}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Design"
+              DTS:DTSID="{93AFEDA1-083B-42ED-9602-8D271B238F9E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Status"
+              DTS:DTSID="{D63A461D-D201-4647-AF78-80A741784C41}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Opened"
+              DTS:DTSID="{716B4089-2D7D-4313-8CB5-FD5472538E67}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Speed ( mph )"
+              DTS:DTSID="{329BF14C-5A9A-4C69-8302-8813A7255A03}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Quite Scary"
+              DTS:DTSID="{3264E32C-F0BE-4338-8862-62BB85C5CC00}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Scary coasters"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{954E6DC2-2FC9-41D2-9869-66120FF28019}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Scary coasters"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Scary coasters\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Type"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input].Columns[Speed ( mph )]"
+                      cachedDataType="r8"
+                      cachedName="Speed ( mph )"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input].Columns[Design]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Design"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input].Columns[Opened]"
+                      cachedDataType="r8"
+                      cachedName="Opened"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Conditional Split.Outputs[Very Scary]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Very Scary"
+                  synchronousInputId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]} == "Wood" &amp;&amp; #{Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]} &gt; 40</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Type == "Wood" &amp;&amp; [Speed ( mph )] &gt; 40</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Conditional Split.Outputs[Quite Scary]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Quite Scary"
+                  synchronousInputId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]} &gt; 1990 || #{Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]} != "Sit Down"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Opened &gt; 1990 || Design != "Sit Down"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Conditional Split.Outputs[Not Scary]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Not Scary"
+                  synchronousInputId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column.Outputs[Derived Column Output].Columns[Scariness]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\Scary coasters\Derived Column.Outputs[Derived Column Output].Columns[Scariness]"
+                      name="Scariness"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Low"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Low"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Output].Columns[Scariness]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Output].Columns[Scariness]"
+                      name="Scariness"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Medium"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Medium"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Output].Columns[Scariness]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Output].Columns[Scariness]"
+                      name="Scariness"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"High"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"High"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Scary coasters\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Scary coasters\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Roller Coaster]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Roller Coaster"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Roller Coaster]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Amusement Park]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Amusement Park"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Amusement Park]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Type"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Design]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Design"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Design]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Opened]"
+                      cachedDataType="r8"
+                      cachedName="Opened"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Opened]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Speed ( mph )]"
+                      cachedDataType="r8"
+                      cachedName="Speed ( mph )"
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Speed ( mph )]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]" />
+                    <inputColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].Columns[Scariness ]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Scariness "
+                      externalMetadataColumnId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Quite Scary]"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Roller Coaster]"
+                      dataType="wstr"
+                      length="255"
+                      name="Roller Coaster" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Amusement Park]"
+                      dataType="wstr"
+                      length="255"
+                      name="Amusement Park" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Design]"
+                      dataType="wstr"
+                      length="255"
+                      name="Design" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Opened]"
+                      dataType="r8"
+                      name="Opened" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Speed ( mph )]"
+                      dataType="r8"
+                      name="Speed ( mph )" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Quite Scary]"
+                      dataType="wstr"
+                      length="6"
+                      name="Quite Scary" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Life is a Rollercoaster"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Life is a Rollercoaster"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Coasters$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Scary coasters\Life is a Rollercoaster.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Roller Coaster]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Roller Coaster]"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Roller Coaster]"
+                      name="Roller Coaster"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Amusement Park]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Amusement Park]"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Amusement Park]"
+                      name="Amusement Park"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Design]"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]"
+                      name="Design"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Opened]"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]"
+                      name="Opened"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Speed ( mph )]"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]"
+                      name="Speed ( mph )"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Roller Coaster]"
+                      dataType="wstr"
+                      length="255"
+                      name="Roller Coaster" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Amusement Park]"
+                      dataType="wstr"
+                      length="255"
+                      name="Amusement Park" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Design]"
+                      dataType="wstr"
+                      length="255"
+                      name="Design" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Opened]"
+                      dataType="r8"
+                      name="Opened" />
+                    <externalMetadataColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].ExternalColumns[Speed ( mph )]"
+                      dataType="r8"
+                      name="Speed ( mph )" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Roller Coaster]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Roller Coaster]"
+                      name="Roller Coaster" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Amusement Park]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Amusement Park]"
+                      name="Amusement Park" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Design]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Design]"
+                      name="Design" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Opened]"
+                      dataType="r8"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Opened]"
+                      name="Opened" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Speed ( mph )]"
+                      dataType="r8"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[Speed ( mph )]"
+                      name="Speed ( mph )" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Scary coasters\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Scary coasters\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Roller Coaster]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Roller Coaster"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Roller Coaster]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Amusement Park]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Amusement Park"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Amusement Park]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Type"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Design]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Design"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Opened]"
+                      cachedDataType="r8"
+                      cachedName="Opened"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Speed ( mph )]"
+                      cachedDataType="r8"
+                      cachedName="Speed ( mph )"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 1].Columns[Scariness]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Scariness"
+                      lineageId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Output].Columns[Scariness]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Scary coasters\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Roller Coaster]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Roller Coaster"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Roller Coaster]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Amusement Park]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Amusement Park"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Amusement Park]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Type"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Design]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Design"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Opened]"
+                      cachedDataType="r8"
+                      cachedName="Opened"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Speed ( mph )]"
+                      cachedDataType="r8"
+                      cachedName="Speed ( mph )"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 2].Columns[Scariness]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Scariness"
+                      lineageId="Package\Scary coasters\Derived Column.Outputs[Derived Column Output].Columns[Scariness]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Scary coasters\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Roller Coaster]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Roller Coaster"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Roller Coaster]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Amusement Park]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Amusement Park"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Amusement Park]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Type"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Design]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Design"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Design]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Opened]"
+                      cachedDataType="r8"
+                      cachedName="Opened"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Opened]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Speed ( mph )]"
+                      cachedDataType="r8"
+                      cachedName="Speed ( mph )"
+                      lineageId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output].Columns[Speed ( mph )]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Scary coasters\Union All.Inputs[Union All Input 3].Columns[Scariness]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Scariness"
+                      lineageId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Output].Columns[Scariness]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Scary coasters\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Scary coasters\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Roller Coaster]"
+                      name="Roller Coaster" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Amusement Park]"
+                      name="Amusement Park" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Design]"
+                      name="Design" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]"
+                      dataType="r8"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Opened]"
+                      name="Opened" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]"
+                      dataType="r8"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Speed ( mph )]"
+                      name="Speed ( mph )" />
+                    <outputColumn
+                      refId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Scary coasters\Union All.Outputs[Union All Output 1].Columns[Scariness ]"
+                      name="Scariness " />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Scary coasters.Paths[Derived Column Output]"
+              endId="Package\Scary coasters\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Scary coasters\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Scary coasters.Paths[Derived Column Output1]"
+              endId="Package\Scary coasters\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Scary coasters\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Scary coasters.Paths[Derived Column Output2]"
+              endId="Package\Scary coasters\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Scary coasters\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Scary coasters.Paths[Excel Source Output]"
+              endId="Package\Scary coasters\Conditional Split.Inputs[Conditional Split Input]"
+              name="Excel Source Output"
+              startId="Package\Scary coasters\Life is a Rollercoaster.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Scary coasters.Paths[Not Scary]"
+              endId="Package\Scary coasters\Derived Column.Inputs[Derived Column Input]"
+              name="Not Scary"
+              startId="Package\Scary coasters\Conditional Split.Outputs[Not Scary]" />
+            <path
+              refId="Package\Scary coasters.Paths[Quite Scary]"
+              endId="Package\Scary coasters\Derived Column 1.Inputs[Derived Column Input]"
+              name="Quite Scary"
+              startId="Package\Scary coasters\Conditional Split.Outputs[Quite Scary]" />
+            <path
+              refId="Package\Scary coasters.Paths[Union All Output 1]"
+              endId="Package\Scary coasters\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Scary coasters\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Scary coasters.Paths[Very Scary]"
+              endId="Package\Scary coasters\Derived Column 2.Inputs[Derived Column Input]"
+              name="Very Scary"
+              startId="Package\Scary coasters\Conditional Split.Outputs[Very Scary]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Scary coasters"
+          TopLeft="342.499981286626,134.333332399196" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Scary coasters">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Scary coasters\Life is a Rollercoaster"
+          TopLeft="349.999980876844,61.5333329054382" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Scary coasters\Conditional Split"
+          TopLeft="360.83331361827,144.733332326876" />
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Excel Source Output]"
+          TopLeft="438.416647247557,103.133332905438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5999994214376"
+              Start="0,0"
+              End="0,34.0999994214376">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0999994214376" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Scary coasters\Derived Column"
+          TopLeft="356.66664717926,271.266664780312" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Scary coasters\Derived Column 1"
+          TopLeft="575.833301871188,277.333331404792" />
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Not Scary]"
+          TopLeft="435.349980398765,186.333332326876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.9333324534364"
+              Start="0,0"
+              End="0,77.4333324534364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.4333324534364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.90693359375,33.0096349767182,43.8138671875,11.4140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Quite Scary]"
+          TopLeft="474.03331361827,186.333332326876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.599988252918,90.9999990779163"
+              Start="0,0"
+              End="182.599988252918,83.4999990779163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3686003647425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.3686003647425"
+                    Point2="0,31.3686003647425"
+                    Point3="4,31.3686003647425" />
+                  <mssgle:LineSegment
+                    End="178.599988252918,31.3686003647425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178.599988252918,31.3686003647425"
+                    Point2="182.599988252918,31.3686003647425"
+                    Point3="182.599988252918,35.3686003647425" />
+                  <mssgle:LineSegment
+                    End="182.599988252918,83.4999990779163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="65.1305410014592,36.3686003647425,52.33890625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Scary coasters\Derived Column 2"
+          TopLeft="133.333326048321,271.733331477112" />
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Very Scary]"
+          TopLeft="401.23331361827,186.333332326876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-187.099987569948,85.3999991502365"
+              Start="0,0"
+              End="-187.099987569948,77.8999991502365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4382249630508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4382249630508"
+                    Point2="0,29.4382249630508"
+                    Point3="-4,29.4382249630508" />
+                  <mssgle:LineSegment
+                    End="-183.099987569948,29.4382249630508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-183.099987569948,29.4382249630508"
+                    Point2="-187.099987569948,29.4382249630508"
+                    Point3="-187.099987569948,33.4382249630508" />
+                  <mssgle:LineSegment
+                    End="-187.099987569948,77.8999991502365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-118.030110972474,34.4382249630508,48.960234375,11.4140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Scary coasters\Union All"
+          TopLeft="368.333313208488,431.466665196154" />
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Derived Column Output]"
+          TopLeft="656.633301871188,318.933331404792">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200.2999886627,112.533333791362"
+              Start="0,0"
+              End="-200.2999886627,105.033333791362">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.3913046465402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.3913046465402"
+                    Point2="0,73.3913046465402"
+                    Point3="-4,73.3913046465402" />
+                  <mssgle:LineSegment
+                    End="-196.2999886627,73.3913046465402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-196.2999886627,73.3913046465402"
+                    Point2="-200.2999886627,73.3913046465402"
+                    Point3="-200.2999886627,77.3913046465402" />
+                  <mssgle:LineSegment
+                    End="-200.2999886627,105.033333791362" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Derived Column Output1]"
+          TopLeft="430.699980193874,312.866664780312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118.600000415842"
+              Start="0,0"
+              End="0,111.100000415842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.100000415842" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Derived Column Output2]"
+          TopLeft="214.133326048321,313.333331477112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186.199987160167,118.133333719042"
+              Start="0,0"
+              End="186.199987160167,110.633333719042">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.0434785124184" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,73.0434785124184"
+                    Point2="0,77.0434785124184"
+                    Point3="4,77.0434785124184" />
+                  <mssgle:LineSegment
+                    End="182.199987160167,77.0434785124184" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182.199987160167,77.0434785124184"
+                    Point2="186.199987160167,77.0434785124184"
+                    Point3="186.199987160167,81.0434785124184" />
+                  <mssgle:LineSegment
+                    End="186.199987160167,110.633333719042" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Scary coasters\Flat File Destination"
+          TopLeft="347.499981013438,532.466664093269" />
+        <EdgeLayout
+          Id="Package\Scary coasters.Paths[Union All Output 1]"
+          TopLeft="430.516647110963,473.066665196154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3999988971154"
+              Start="0,0"
+              End="0,51.8999988971154">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8999988971154" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Scary coasters\Life is a Rollercoaster">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

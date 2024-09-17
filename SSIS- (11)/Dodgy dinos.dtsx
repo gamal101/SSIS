@@ -1,0 +1,635 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/20/2017 11:33:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUMPH"
+  DTS:CreatorName="WISEOWL\Andy.Brown"
+  DTS:DTSID="{56E9E526-5593-4388-A245-D4A876DFD8C4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Dodgy dinos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{E6CB13D9-AD85-46D8-9AE6-CC27120B070D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Dinos workbook]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4EB73CF9-5A08-40CE-8B48-4E053B21CD4F}"
+      DTS:ObjectName="Dinos workbook">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\ajb\Dino File.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Check dinosaur periods"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5026C2D0-FBF0-4A27-8D53-6FFF914B8742}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Check dinosaur periods"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Check dinosaur periods\Find corresponding period"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Find corresponding period"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Periods]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Periods]) [refTable]
+where [refTable].[Period] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Period" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Period]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Check dinosaur periods\Find corresponding period.Connections[OleDbConnection]"
+                  connectionManagerID="{548C867D-C15A-45F2-BD64-686786072B0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[__sql2016.Wistful]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input].Columns[Period]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Period"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Period]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Period</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Check dinosaur periods\List of dinosaurs"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="List of dinosaurs"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Specimens$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Check dinosaur periods\List of dinosaurs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Dinos workbook]"
+                  connectionManagerRefId="Package.ConnectionManagers[Dinos workbook]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Period]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Period]"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Period]"
+                      name="Period"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Meaning of Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Meaning of Name]"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Meaning of Name]"
+                      name="Meaning of Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Pronunciation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Pronunciation]"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Pronunciation]"
+                      name="Pronunciation"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Meaning of Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Meaning of Name" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Pronunciation]"
+                      dataType="wstr"
+                      length="255"
+                      name="Pronunciation" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Period]"
+                      dataType="wstr"
+                      length="255"
+                      name="Period" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Diet]"
+                      dataType="wstr"
+                      length="255"
+                      name="Diet" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Length (m)]"
+                      dataType="r8"
+                      name="Length (m)" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Height  (m)]"
+                      dataType="r8"
+                      name="Height  (m)" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Mass kg]"
+                      dataType="r8"
+                      name="Mass kg" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[No# of feet it walked on?]"
+                      dataType="r8"
+                      name="No# of feet it walked on?" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Hip Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Hip Type" />
+                    <externalMetadataColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].ExternalColumns[Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Group" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Period]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Period]"
+                      name="Period" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Meaning of Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Meaning of Name]"
+                      name="Meaning of Name" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Pronunciation]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Error Output].Columns[Pronunciation]"
+                      name="Pronunciation" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Check dinosaur periods\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1].Columns[Period]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Period"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Period]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Period]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1].Columns[Meaning of Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Meaning of Name"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Meaning of Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Meaning of Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1].Columns[Pronunciation]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Pronunciation"
+                      lineageId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output].Columns[Pronunciation]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Pronunciation]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Period]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Period]"
+                      name="Period" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Meaning of Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Meaning of Name]"
+                      name="Meaning of Name" />
+                    <outputColumn
+                      refId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Pronunciation]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Check dinosaur periods\Union All.Outputs[Union All Output 1].Columns[Pronunciation]"
+                      name="Pronunciation" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Check dinosaur periods.Paths[Excel Source Output]"
+              endId="Package\Check dinosaur periods\Find corresponding period.Inputs[Lookup Input]"
+              name="Excel Source Output"
+              startId="Package\Check dinosaur periods\List of dinosaurs.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Check dinosaur periods.Paths[Lookup No Match Output]"
+              endId="Package\Check dinosaur periods\Union All.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Check dinosaur periods\Find corresponding period.Outputs[Lookup No Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Check dinosaur periods"
+          TopLeft="23.4285718275576,22.6352944350985" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Check dinosaur periods">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Check dinosaur periods\List of dinosaurs"
+          TopLeft="84.4285728663814,21.7176473634053" />
+        <NodeLayout
+          Size="200.8,41.6"
+          Id="Package\Check dinosaur periods\Find corresponding period"
+          TopLeft="65.0000011069434,91.7647071693183" />
+        <EdgeLayout
+          Id="Package\Check dinosaur periods.Paths[Excel Source Output]"
+          TopLeft="163.714286986662,63.3176473634053">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.447059805913"
+              Start="0,0"
+              End="0,20.947059805913">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.947059805913" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Check dinosaur periods\Union All"
+          TopLeft="102.85714460879,171.294120049394" />
+        <EdgeLayout
+          Id="Package\Check dinosaur periods.Paths[Lookup No Match Output]"
+          TopLeft="164.128572857867,133.364707169318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9294128800758"
+              Start="0,0"
+              End="0,30.4294128800758">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4294128800758" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-64.6750390625,7.21470644003792,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Check dinosaur periods\List of dinosaurs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Check dinosaur periods\Find corresponding period">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Periods]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1409 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2017 5:52:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUMPH"
+  DTS:CreatorName="WISEOWL\Andy.Brown"
+  DTS:DTSID="{2BBE940A-926A-432E-9BFD-037D038AC4E7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Brexit analysis"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{BB9ED12C-9BFB-4452-A98A-07BBF75FA3E0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{56381B28-6B3F-49B3-854D-CCAC972011F6}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\ajb\Voting figures.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0B0E5752-D79E-450E-A8D7-3B1A06DAC390}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\ajb\Summary of votes.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Area"
+              DTS:DTSID="{97EFFE0F-0EBC-4ECB-9BF0-8222C30B60B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Remain"
+              DTS:DTSID="{927E2D02-0834-4A36-972A-DDE812618E39}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Leave"
+              DTS:DTSID="{D7023B0A-7EA8-42D9-A579-413EEFEFC45B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Status"
+              DTS:DTSID="{D86013D5-3EBF-403D-85A4-E2D007338792}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Absolute difference"
+              DTS:DTSID="{FE42A456-34FB-468C-9B79-FABEE1A0D058}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Split voters into camps"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DB8663B2-FDB0-4DF2-8D17-96F1C3D02654}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Split voters into camps"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Split voters into camps\1 - Voting figures sheet"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="1 - Voting figures sheet"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Voting$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Split voters into camps\1 - Voting figures sheet.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Area]"
+                      length="255"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Area]"
+                      name="Area"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Remain]"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]"
+                      name="Remain"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Leave]"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]"
+                      name="Leave"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Area]"
+                      dataType="wstr"
+                      length="255"
+                      name="Area" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Electorate]"
+                      dataType="r8"
+                      name="Electorate" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[ValidVotes]"
+                      dataType="r8"
+                      name="ValidVotes" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Remain]"
+                      dataType="r8"
+                      name="Remain" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].ExternalColumns[Leave]"
+                      dataType="r8"
+                      name="Leave" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Area]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Area]"
+                      name="Area" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Remain]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Remain]"
+                      name="Remain" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Leave]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[Leave]"
+                      name="Leave" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\2 - LEAVE or REMAIN"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="2 - LEAVE or REMAIN"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Leavers]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Leavers"
+                  synchronousInputId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]} &gt; #{Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Leave &gt; Remain</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Remainers]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Remainers"
+                  synchronousInputId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\3 - Set status to LEAVE"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="3 - Set status to LEAVE"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\3 - Set status to LEAVE.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Split voters into camps\3 - Set status to LEAVE.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,6)"Leave"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,6)"Leave"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Split voters into camps\3 - Set status to LEAVE.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\4 - Set status to REMAIN"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="4 - Set status to REMAIN"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\4 - Set status to REMAIN.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Split voters into camps\4 - Set status to REMAIN.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Remain"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Remain"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Split voters into camps\4 - Set status to REMAIN.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\5 - Recombine"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="5 - Recombine"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Area"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Area]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Status"
+                      lineageId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Area"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Area]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Remain]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      lineageId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output].Columns[Leave]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Status"
+                      lineageId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]"
+                      name="Area" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]"
+                      name="Remain" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]"
+                      name="Leave" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\6 - Calculate absolute difference"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="6 - Calculate absolute difference"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output].Columns[Absolute difference]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output].Columns[Absolute difference]"
+                      name="Absolute difference"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]} - #{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(Leave - Remain)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\7 - Sort by this"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="7 - Sort by this"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Area"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Status"
+                      lineageId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input].Columns[Absolute difference]"
+                      cachedDataType="r8"
+                      cachedName="Absolute difference"
+                      lineageId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output].Columns[Absolute difference]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Area]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Area]"
+                      name="Area">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Area]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Remain]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Remain]"
+                      name="Remain">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Remain]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Leave]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Leave]"
+                      name="Leave">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Leave]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Status]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Status]"
+                      name="Status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Absolute difference]"
+                      dataType="r8"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Absolute difference]"
+                      name="Absolute difference"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output].Columns[Absolute difference]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Split voters into camps\8 - Output to text file"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="2057"
+              name="8 - Output to text file">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Split voters into camps\8 - Output to text file.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Area"
+                      externalMetadataColumnId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Area]"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Area]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].Columns[Remain]"
+                      cachedDataType="r8"
+                      cachedName="Remain"
+                      externalMetadataColumnId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Remain]"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Remain]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].Columns[Leave]"
+                      cachedDataType="r8"
+                      cachedName="Leave"
+                      externalMetadataColumnId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Leave]"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Leave]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].Columns[Absolute difference]"
+                      cachedDataType="r8"
+                      cachedName="Absolute difference"
+                      cachedSortKeyPosition="-1"
+                      externalMetadataColumnId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Absolute difference]"
+                      lineageId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output].Columns[Absolute difference]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Area]"
+                      dataType="wstr"
+                      length="255"
+                      name="Area" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Remain]"
+                      dataType="r8"
+                      name="Remain" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Leave]"
+                      dataType="r8"
+                      name="Leave" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="6"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input].ExternalColumns[Absolute difference]"
+                      dataType="r8"
+                      name="Absolute difference" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Split voters into camps.Paths[Derived Column Output]"
+              endId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Split voters into camps\3 - Set status to LEAVE.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Derived Column Output1]"
+              endId="Package\Split voters into camps\5 - Recombine.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Split voters into camps\4 - Set status to REMAIN.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Derived Column Output2]"
+              endId="Package\Split voters into camps\7 - Sort by this.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Split voters into camps\6 - Calculate absolute difference.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Excel Source Output]"
+              endId="Package\Split voters into camps\2 - LEAVE or REMAIN.Inputs[Conditional Split Input]"
+              name="Excel Source Output"
+              startId="Package\Split voters into camps\1 - Voting figures sheet.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Leavers]"
+              endId="Package\Split voters into camps\3 - Set status to LEAVE.Inputs[Derived Column Input]"
+              name="Leavers"
+              startId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Leavers]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Remainers]"
+              endId="Package\Split voters into camps\4 - Set status to REMAIN.Inputs[Derived Column Input]"
+              name="Remainers"
+              startId="Package\Split voters into camps\2 - LEAVE or REMAIN.Outputs[Remainers]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Sort Output]"
+              endId="Package\Split voters into camps\8 - Output to text file.Inputs[Flat File Destination Input]"
+              name="Sort Output"
+              startId="Package\Split voters into camps\7 - Sort by this.Outputs[Sort Output]" />
+            <path
+              refId="Package\Split voters into camps.Paths[Union All Output 1]"
+              endId="Package\Split voters into camps\6 - Calculate absolute difference.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Split voters into camps\5 - Recombine.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Split voters into camps"
+          TopLeft="34.8571434507565,19.5764708627879" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Split voters into camps">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Split voters into camps\1 - Voting figures sheet"
+          TopLeft="92.5714301479106,37.9294122966516" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Split voters into camps\2 - LEAVE or REMAIN"
+          TopLeft="96.5714302160302,102.776472029637" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Excel Source Output]"
+          TopLeft="186.57143018197,79.5294122966516">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.2470597329849"
+              Start="0,0"
+              End="0,15.7470597329849">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7470597329849" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,59.2"
+          Id="Package\Split voters into camps\3 - Set status to LEAVE"
+          TopLeft="73.7142869696325,177.411767194015" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Leavers]"
+          TopLeft="157.638096882697,144.376472029637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.1238099130643,33.0352951643788"
+              Start="0,0"
+              End="-19.1238099130643,25.5352951643788">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.38952671264203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.38952671264203"
+                    Point2="0,13.389526712642"
+                    Point3="-4,13.389526712642" />
+                  <mssgle:LineSegment
+                    End="-15.1238099130643,13.389526712642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.1238099130643,13.389526712642"
+                    Point2="-19.1238099130643,13.389526712642"
+                    Point3="-19.1238099130643,17.389526712642" />
+                  <mssgle:LineSegment
+                    End="-19.1238099130643,25.5352951643788" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.9944830815322,18.389526712642,34.86515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,50.4"
+          Id="Package\Split voters into camps\4 - Set status to REMAIN"
+          TopLeft="232.571432532097,181.69412019525" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Remainers]"
+          TopLeft="214.704763549364,144.376472029637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.6666689827331,37.3176481656137"
+              Start="0,0"
+              End="82.6666689827331,29.8176481656137">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.1252060706647" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.1252060706647"
+                    Point2="0,15.1252060706647"
+                    Point3="4,15.1252060706647" />
+                  <mssgle:LineSegment
+                    End="78.6666689827331,15.1252060706647" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.6666689827331,15.1252060706647"
+                    Point2="82.6666689827331,15.1252060706647"
+                    Point3="82.6666689827331,19.1252060706647" />
+                  <mssgle:LineSegment
+                    End="82.6666689827331,29.8176481656137" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.6407563663665,20.1252060706647,47.38515625,9.470703125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Split voters into camps\5 - Recombine"
+          TopLeft="96.5714302160304,264.282356647637" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Derived Column Output]"
+          TopLeft="138.514286969633,236.611767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.19047657973115,27.6705894536214"
+              Start="0,0"
+              End="8.19047657973115,20.1705894536214">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.4228687676088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.4228687676088"
+                    Point2="0,16.4228687676088"
+                    Point3="4,16.4228687676088" />
+                  <mssgle:LineSegment
+                    End="4.19047657973115,16.4228687676088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.19047657973115,16.4228687676088"
+                    Point2="8.19047657973115,16.4228687676088"
+                    Point3="8.19047657973115,20.4228687676088" />
+                  <mssgle:LineSegment
+                    End="8.19047657973115,20.1705894536214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Derived Column Output1]"
+          TopLeft="297.371432532097,232.09412019525">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.5333356494,32.1882364523865"
+              Start="0,0"
+              End="-104.5333356494,24.6882364523865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1041533106596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1041533106596"
+                    Point2="0,19.1041533106596"
+                    Point3="-4,19.1041533106596" />
+                  <mssgle:LineSegment
+                    End="-100.5333356494,19.1041533106596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.5333356494,19.1041533106596"
+                    Point2="-104.5333356494,19.1041533106596"
+                    Point3="-104.5333356494,23.1041533106596" />
+                  <mssgle:LineSegment
+                    End="-104.5333356494,24.6882364523865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="144,48"
+          Id="Package\Split voters into camps\6 - Calculate absolute difference"
+          TopLeft="272.571433213293,265.505886076561" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Union All Output 1]"
+          TopLeft="242.97143021603,287.294121362099">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.6000029972622,0"
+              Start="0,0"
+              End="22.1000029972622,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.1000029972622,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,48.8"
+          Id="Package\Split voters into camps\7 - Sort by this"
+          TopLeft="265.714290239373,338.917651812016" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Derived Column Output2]"
+          TopLeft="344.571433213293,313.505886076561">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.0571429739196,25.4117657354545"
+              Start="0,0"
+              End="-14.0571429739196,17.9117657354545">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.70588286772727" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.70588286772727"
+                    Point2="0,12.7058828677273"
+                    Point3="-4,12.7058828677273" />
+                  <mssgle:LineSegment
+                    End="-10.0571429739196,12.7058828677273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.0571429739196,12.7058828677273"
+                    Point2="-14.0571429739196,12.7058828677273"
+                    Point3="-14.0571429739196,16.7058828677273" />
+                  <mssgle:LineSegment
+                    End="-14.0571429739196,17.9117657354545" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133.6,56"
+          Id="Package\Split voters into camps\8 - Output to text file"
+          TopLeft="93.1428587290706,326.258827656281" />
+        <EdgeLayout
+          Id="Package\Split voters into camps.Paths[Sort Output]"
+          TopLeft="265.714290239373,363.317651812016">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.9714315103024,-9.05882415573484"
+              Start="0,0"
+              End="-31.4714315103024,-9.05882415573484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-15.4857157551512,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.4857157551512,0"
+                    Point2="-19.4857157551512,0"
+                    Point3="-19.4857157551512,-4" />
+                  <mssgle:LineSegment
+                    End="-19.4857157551512,-5.05882415573484" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.4857157551512,-5.05882415573484"
+                    Point2="-19.4857157551512,-9.05882415573484"
+                    Point3="-23.4857157551512,-9.05882415573484" />
+                  <mssgle:LineSegment
+                    End="-31.4714315103024,-9.05882415573484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Split voters into camps\1 - Voting figures sheet">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

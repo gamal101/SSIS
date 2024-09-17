@@ -1,0 +1,1353 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2017 8:58:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUMPH"
+  DTS:CreatorName="WISEOWL\Andy.Brown"
+  DTS:DTSID="{5D87A72E-3231-496D-8756-295AF892F863}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Playlist"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{6DDA352A-8CEB-4CDF-8BD4-4FE8F22F23C7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Workbook of songs]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{01EF06DB-5053-49B1-A54F-F143356F219F}"
+      DTS:ObjectName="Workbook of songs">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\ajb\Million-sellers.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Filter and sort list of songs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3e1939c0-cd89-4ac4-a698-7addfd5de999}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Filter and sort list of songs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Filter and sort list of songs\Excel source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Million-sellers$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Filter and sort list of songs\Excel source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Workbook of songs]"
+                  connectionManagerRefId="Package.ConnectionManagers[Workbook of songs]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Artist]"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]"
+                      name="Artist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Rank]"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]"
+                      name="Rank"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]"
+                      name="Sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      name="Artist" />
+                    <externalMetadataColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Rank]"
+                      dataType="r8"
+                      name="Rank" />
+                    <externalMetadataColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      dataType="r8"
+                      name="Sales" />
+                    <externalMetadataColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Artist]"
+                      name="Artist" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Rank]"
+                      name="Rank" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Multicast.Outputs[Multicast Output 3]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Filter and sort list of songs\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Filter and sort list of songs\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Filter and sort list of songs\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Filter and sort list of songs\Multicast.Outputs[Multicast Output 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Filter and sort list of songs\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Percentage Sampling"
+              componentClassID="Microsoft.PctSampling"
+              contactInfo="Percentage Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Randomly samples a percentage of rows from an input data flow. For example, use it twice to help create a data mining model: create one sample for training the model and another sample for testing the model."
+              name="Percentage Sampling">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage size of the sample."
+                  expressionType="Notify"
+                  name="SamplingValue">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the seed for the random number generator."
+                  name="SamplingSeed">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Percentage Sampling.Inputs[Percentage Sampling Input 1]"
+                  name="Percentage Sampling Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Percentage Sampling.Outputs[Sampling Selected Output]"
+                  exclusionGroup="1"
+                  name="Sampling Selected Output"
+                  synchronousInputId="Package\Filter and sort list of songs\Percentage Sampling.Inputs[Percentage Sampling Input 1]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Filter and sort list of songs\Percentage Sampling.Outputs[Sampling Unselected Output]"
+                  exclusionGroup="1"
+                  name="Sampling Unselected Output"
+                  synchronousInputId="Package\Filter and sort list of songs\Percentage Sampling.Inputs[Percentage Sampling Input 1]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">false</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Row Sampling"
+              componentClassID="Microsoft.RowSampling"
+              contactInfo="Row Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Randomly samples a specific number of rows from an input data flow. For example, use it randomly select products to feature on your Web site."
+              name="Row Sampling">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of rows in the sample."
+                  expressionType="Notify"
+                  name="SamplingValue">3</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the seed for the random number generator."
+                  name="SamplingSeed">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1]"
+                  name="Row Sampling Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1].Columns[Artist]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Artist"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]" />
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1].Columns[Rank]"
+                      cachedDataType="r8"
+                      cachedName="Rank"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]" />
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]" />
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output]"
+                  name="Sampling Selected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">true</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Sales]"
+                      name="Sales">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Year]"
+                      name="Year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output]"
+                  name="Sampling Unselected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">false</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Sales]"
+                      name="Sales">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Unselected Output].Columns[Year]"
+                      name="Year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input].Columns[Artist]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Artist"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input].Columns[Rank]"
+                      cachedDataType="r8"
+                      cachedName="Rank"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Sales]"
+                      name="Sales"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Year]"
+                      name="Year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1].Columns[Artist]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Artist"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1].Columns[Rank]"
+                      cachedDataType="r8"
+                      cachedName="Rank"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Rank]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Sales]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output].Columns[Year]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2].Columns[Artist]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Artist"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2].Columns[Rank]"
+                      cachedDataType="r8"
+                      cachedName="Rank"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Rank]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Sales]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output].Columns[Year]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Artist]"
+                      name="Artist" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Rank]"
+                      name="Rank" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1].Columns[Year]"
+                      name="Year" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Filter and sort list of songs\Union All 1"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 1"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1].Columns[Artist]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Artist"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Artist]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1].Columns[Rank]"
+                      cachedDataType="r8"
+                      cachedName="Rank"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Rank]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Rank]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Sales]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output].Columns[Year]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Year]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Artist]"
+                      name="Artist" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Rank]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Rank]"
+                      name="Rank" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Filter and sort list of songs\Union All 1.Outputs[Union All Output 1].Columns[Year]"
+                      name="Year" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Excel Source Output]"
+              endId="Package\Filter and sort list of songs\Multicast.Inputs[Multicast Input 1]"
+              name="Excel Source Output"
+              startId="Package\Filter and sort list of songs\Excel source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Multicast Output 1]"
+              endId="Package\Filter and sort list of songs\Percentage Sampling.Inputs[Percentage Sampling Input 1]"
+              name="Multicast Output 1"
+              startId="Package\Filter and sort list of songs\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Multicast Output 3]"
+              endId="Package\Filter and sort list of songs\Row Sampling.Inputs[Row Sampling Input 1]"
+              name="Multicast Output 3"
+              startId="Package\Filter and sort list of songs\Multicast.Outputs[Multicast Output 3]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Sampling Selected Output]"
+              endId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 1]"
+              name="Sampling Selected Output"
+              startId="Package\Filter and sort list of songs\Row Sampling.Outputs[Sampling Selected Output]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Sampling Selected Output1]"
+              endId="Package\Filter and sort list of songs\Union All.Inputs[Union All Input 2]"
+              name="Sampling Selected Output"
+              startId="Package\Filter and sort list of songs\Percentage Sampling.Outputs[Sampling Selected Output]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Sort Output]"
+              endId="Package\Filter and sort list of songs\Union All 1.Inputs[Union All Input 1]"
+              name="Sort Output"
+              startId="Package\Filter and sort list of songs\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Filter and sort list of songs.Paths[Union All Output 1]"
+              endId="Package\Filter and sort list of songs\Sort.Inputs[Sort Input]"
+              name="Union All Output 1"
+              startId="Package\Filter and sort list of songs\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Filter and sort list of songs"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Filter and sort list of songs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Filter and sort list of songs\Multicast"
+          TopLeft="41.4285721340961,151.117648785502" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Filter and sort list of songs\Row Sampling"
+          TopLeft="195.514288791832,121.294118955474" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Filter and sort list of songs\Sort"
+          TopLeft="373.555561917169,278.024840107811" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Filter and sort list of songs\Union All"
+          TopLeft="370.000006301062,160.141178323818" />
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Filter and sort list of songs\Excel source"
+          TopLeft="37.714286356556,73.8823535846592" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Filter and sort list of songs\Percentage Sampling"
+          TopLeft="192.285717560321,193.176472904773" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Filter and sort list of songs\Union All 1"
+          TopLeft="196.00000333786,274.099349856679" />
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Union All Output 1]"
+          TopLeft="426.177784109116,201.741178323818">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.2836617839935"
+              Start="0,0"
+              End="0,68.7836617839935">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.7836617839935" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Sort Output]"
+          TopLeft="373.555561917169,296.862094982245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47.9555585793093,0"
+              Start="0,0"
+              End="-40.4555585793093,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-40.4555585793093,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.2277792896546,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Sampling Selected Output1]"
+          TopLeft="326.685717560321,213.976472904773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.3142887407415,-27.4352945809549"
+              Start="0,0"
+              End="35.8142887407415,-27.4352945809549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.0260334946506,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.0260334946506,0"
+                    Point2="25.0260334946506,0"
+                    Point3="25.0260334946506,-4" />
+                  <mssgle:LineSegment
+                    End="25.0260334946506,-23.4352945809549" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.0260334946506,-23.4352945809549"
+                    Point2="25.0260334946506,-27.4352945809549"
+                    Point3="29.0260334946506,-27.4352945809549" />
+                  <mssgle:LineSegment
+                    End="35.8142887407415,-27.4352945809549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.9160172865994,1,115.8841015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Sampling Selected Output]"
+          TopLeft="325.114288791832,142.094118955474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.8857175092308,33.2470593683443"
+              Start="0,0"
+              End="37.3857175092308,33.2470593683443">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.9339701164445,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.9339701164445,0"
+                    Point2="25.9339701164445,0"
+                    Point3="25.9339701164445,4" />
+                  <mssgle:LineSegment
+                    End="25.9339701164445,29.2470593683443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.9339701164445,29.2470593683443"
+                    Point2="25.9339701164445,33.2470593683443"
+                    Point3="29.9339701164445,33.2470593683443" />
+                  <mssgle:LineSegment
+                    End="37.3857175092308,33.2470593683443" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.0080806648055,-17.6630859375,115.8841015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Multicast Output 3]"
+          TopLeft="161.428572134096,171.917648785502">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.0857166577356,-29.8235298300287"
+              Start="0,0"
+              End="26.5857166577356,-29.8235298300287">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="13.0428583288678,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.0428583288678,0"
+                    Point2="17.0428583288678,0"
+                    Point3="17.0428583288678,-4" />
+                  <mssgle:LineSegment
+                    End="17.0428583288678,-25.8235298300287" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.0428583288678,-25.8235298300287"
+                    Point2="17.0428583288678,-29.8235298300287"
+                    Point3="21.0428583288678,-29.8235298300287" />
+                  <mssgle:LineSegment
+                    End="26.5857166577356,-29.8235298300287" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Multicast Output 1]"
+          TopLeft="161.428572134096,177.517648785502">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.8571454262249,36.4588241192705"
+              Start="0,0"
+              End="23.3571454262249,36.4588241192705">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="9.02857251329497,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.02857251329497,0"
+                    Point2="13.028572513295,0"
+                    Point3="13.028572513295,4" />
+                  <mssgle:LineSegment
+                    End="13.028572513295,32.4588241192705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.028572513295,32.4588241192705"
+                    Point2="13.028572513295,36.4588241192705"
+                    Point3="17.028572513295,36.4588241192705" />
+                  <mssgle:LineSegment
+                    End="23.3571454262249,36.4588241192705" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filter and sort list of songs.Paths[Excel Source Output]"
+          TopLeft="103.771429245326,115.482353584659">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.635295200843"
+              Start="0,0"
+              End="0,28.135295200843">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.135295200843" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

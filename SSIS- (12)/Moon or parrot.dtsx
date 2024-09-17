@@ -1,0 +1,312 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/21/2017 1:27:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUMPH"
+  DTS:CreatorName="WISEOWL\Andy.Brown"
+  DTS:DTSID="{FAF93F51-BE0B-4902-8B96-00F74AA2C458}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Moon or parrot"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6964B237-88D8-4675-87A0-591AFD57A7E3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{685C2486-4E03-4F6F-AB52-1F7597D0A766}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=P:\Exercises\Andy B\SSIS\merge joins\footie\Premier Leagues.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{CA9C1155-48D5-4541-8EF9-8CF6888FD3E8}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (12)\Premier Leagues.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3BA5009B-F788-4B2B-A176-6B106C272F3A}"
+      DTS:ObjectName="Excel Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (12)\Premier Leagues.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Show discrepancies"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{94C3F06C-314D-46F7-9E5A-250FA6E06F54}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Show discrepancies"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Show discrepancies"
+          TopLeft="85.7142871739913,12.2352942892425" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Show discrepancies">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,41.6"
+          Id="91"
+          TopLeft="235.714289728476,354.517652030799" />
+        <NodeLayout
+          Size="168.8,52.8"
+          Id="81"
+          TopLeft="366.142863378233,120.364705966006" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="44"
+          TopLeft="222.142860925928,197.294120414034" />
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="58"
+          TopLeft="198.57143195308,264.129415469022" />
+        <NodeLayout
+          Size="117.6,41.6"
+          Id="23"
+          TopLeft="289.142862066931,48.3294108380908" />
+        <NodeLayout
+          Size="174.4,56"
+          Id="71"
+          TopLeft="90.7142872591405,115.776472211957" />
+        <NodeLayout
+          Size="117.6,41.6"
+          Id="2"
+          TopLeft="136.571430897226,47.7176477280455" />
+        <EdgeLayout
+          Id="101"
+          TopLeft="294.942860840778,305.729415469022">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.7882365617777"
+              Start="0,0"
+              End="0,41.2882365617777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2882365617777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.24123046875,12.6441182808888,39.1601953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="106"
+          TopLeft="450.542863378233,173.164705966006">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-134.266669118972,24.1294144480279"
+              Start="0,0"
+              End="-134.266669118972,16.6294144480279">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.3176746503768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.3176746503768"
+                    Point2="0,14.3176746503768"
+                    Point3="-4,14.3176746503768" />
+                  <mssgle:LineSegment
+                    End="-130.266669118972,14.3176746503768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-130.266669118972,14.3176746503768"
+                    Point2="-134.266669118972,14.3176746503768"
+                    Point3="-134.266669118972,18.3176746503768" />
+                  <mssgle:LineSegment
+                    End="-134.266669118972,16.6294144480279" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="105"
+          TopLeft="177.914287259141,171.776472211957">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.2952403334538,25.5176482020772"
+              Start="0,0"
+              End="93.2952403334538,18.0176482020772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.141411143111" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.141411143111"
+                    Point2="0,15.141411143111"
+                    Point3="4,15.141411143111" />
+                  <mssgle:LineSegment
+                    End="89.2952403334538,15.141411143111" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89.2952403334538,15.141411143111"
+                    Point2="93.2952403334538,15.141411143111"
+                    Point3="93.2952403334538,19.141411143111" />
+                  <mssgle:LineSegment
+                    End="93.2952403334538,18.0176482020772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="104"
+          TopLeft="293.957146439504,238.894120414034">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.2352950549877"
+              Start="0,0"
+              End="0,17.7352950549877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7352950549877" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="103"
+          TopLeft="347.942862066931,89.9294108380908">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.600001311302,30.4352951279151"
+              Start="0,0"
+              End="102.600001311302,22.9352951279151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.2176475639576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.2176475639576"
+                    Point2="0,15.2176475639576"
+                    Point3="4,15.2176475639576" />
+                  <mssgle:LineSegment
+                    End="98.6000013113024,15.2176475639576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.6000013113024,15.2176475639576"
+                    Point2="102.600001311302,15.2176475639576"
+                    Point3="102.600001311302,19.2176475639576" />
+                  <mssgle:LineSegment
+                    End="102.600001311302,22.9352951279151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="102"
+          TopLeft="195.371430897226,89.3176477280455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.4571436380855,26.4588244839112"
+              Start="0,0"
+              End="-17.4571436380855,18.9588244839112">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.22941224195559" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.22941224195559"
+                    Point2="0,13.2294122419556"
+                    Point3="-4,13.2294122419556" />
+                  <mssgle:LineSegment
+                    End="-13.4571436380855,13.2294122419556" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.4571436380855,13.2294122419556"
+                    Point2="-17.4571436380855,13.2294122419556"
+                    Point3="-17.4571436380855,17.2294122419556" />
+                  <mssgle:LineSegment
+                    End="-17.4571436380855,18.9588244839112" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

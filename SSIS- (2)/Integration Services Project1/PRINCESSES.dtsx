@@ -1,0 +1,818 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/14/2024 9:59:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-T4KINTS"
+  DTS:CreatorName="DESKTOP-T4KINTS\Ahmed Sayed"
+  DTS:DTSID="{E5B09E7C-E6CE-4F3B-A09F-CD64B7A1A804}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PRINCESSES"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{0392DC5B-15AA-49B1-A222-6E3F3575A859}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{41BFB3AC-56FE-4C86-B199-D24663C921AB}"
+      DTS:ObjectName="DESKTOP-T4KINTS\SQLEXPRESS.Wistful">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-T4KINTS\SQLEXPRESS;Initial Catalog=Wistful;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{41BFB3AC-56FE-4C86-B199-D24663C921AB}DESKTOP-T4KINTS\SQLEXPRESS.Wistful;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{01BC0E2B-91F6-48D7-9F02-0E2392744ABD}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (2)\Disney Princesses.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A7338AD2-E2BB-4324-92D6-2F83CFF6A344}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (2)\Not drippy.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{3AB65DBC-74FB-4888-B2CE-956ABE124075}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Feminist rating"
+              DTS:DTSID="{3C4D489A-1ADC-451C-A8E3-661351C529FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="First appeared"
+              DTS:DTSID="{C1C98F05-51B1-4A21-9550-CC08CF589419}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Vehicle"
+              DTS:DTSID="{4A2A4719-3FBF-4EDB-ACFB-3E56709D5B14}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\divide the Disney princesses"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E7401478-B849-4145-BA7C-A0DA99D0E860}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="divide the Disney princesses"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\divide the Disney princesses\divide the Disney princesses"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="divide the Disney princesses"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input].Columns[Feminist rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Feminist rating"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Princesses]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Princesses"
+                  synchronousInputId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]} == "Feisty"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">[Feminist rating] == "Feisty"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Not drippy]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Not drippy"
+                  synchronousInputId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]} != "Drippy"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">[Feminist rating] != "Drippy"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\divide the Disney princesses\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\divide the Disney princesses\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].Columns[Feminist rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Feminist rating"
+                      externalMetadataColumnId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Feminist rating]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].Columns[First appeared]"
+                      cachedDataType="r8"
+                      cachedName="First appeared"
+                      externalMetadataColumnId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[First appeared]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[First appeared]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].Columns[Vehicle]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle"
+                      externalMetadataColumnId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Vehicle]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Vehicle]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Feminist rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="Feminist rating" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[First appeared]"
+                      dataType="r8"
+                      name="First appeared" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\divide the Disney princesses\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Princesses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\divide the Disney princesses\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vehicle]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle"
+                      externalMetadataColumnId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Vehicle]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[First appeared]"
+                      cachedDataType="r8"
+                      cachedName="First appeared"
+                      externalMetadataColumnId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstAppeared]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[First appeared]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Feminist rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Feminist rating"
+                      externalMetadataColumnId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FeministRating]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]" />
+                    <inputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Princessname]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Princessname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Princessname" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FeministRating]"
+                      dataType="wstr"
+                      length="255"
+                      name="FeministRating" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstAppeared]"
+                      dataType="i4"
+                      name="FirstAppeared" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\divide the Disney princesses\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\divide the Disney princesses\princesses"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="princesses"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Princesses$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\divide the Disney princesses\princesses.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Feminist rating]"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Feminist rating]"
+                      name="Feminist rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[First appeared]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[First appeared]"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[First appeared]"
+                      name="First appeared"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Vehicle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Feminist rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="Feminist rating" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[First appeared]"
+                      dataType="r8"
+                      name="First appeared" />
+                    <externalMetadataColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Feminist rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Feminist rating]"
+                      name="Feminist rating" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[First appeared]"
+                      dataType="r8"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[First appeared]"
+                      name="First appeared" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\divide the Disney princesses.Paths[Excel Source Output]"
+              endId="Package\divide the Disney princesses\divide the Disney princesses.Inputs[Conditional Split Input]"
+              name="Excel Source Output"
+              startId="Package\divide the Disney princesses\princesses.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\divide the Disney princesses.Paths[Not drippy]"
+              endId="Package\divide the Disney princesses\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Not drippy"
+              startId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Not drippy]" />
+            <path
+              refId="Package\divide the Disney princesses.Paths[Princesses]"
+              endId="Package\divide the Disney princesses\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Princesses"
+              startId="Package\divide the Disney princesses\divide the Disney princesses.Outputs[Princesses]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\divide the Disney princesses"
+          TopLeft="298.571429207009,112.411764607349" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\divide the Disney princesses">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="127.2,41.6"
+          Id="Package\divide the Disney princesses\princesses"
+          TopLeft="289.285714901528,51.2352940727373" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\divide the Disney princesses\divide the Disney princesses"
+          TopLeft="247.142857668959,152.176470454847" />
+        <EdgeLayout
+          Id="Package\divide the Disney princesses.Paths[Excel Source Output]"
+          TopLeft="352.814286285243,92.8352940727373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3411763821094"
+              Start="0,0"
+              End="0,51.8411763821094">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8411763821094" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\divide the Disney princesses\Flat File Destination"
+          TopLeft="429.285715199551,254.647058600321" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\divide the Disney princesses\OLE DB Destination"
+          TopLeft="185.000000393817,255.270588054315" />
+        <EdgeLayout
+          Id="Package\divide the Disney princesses.Paths[Princesses]"
+          TopLeft="352.742857668959,193.776470454847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-82.5428572751428,61.4941175994679"
+              Start="0,0"
+              End="-82.5428572751428,53.9941175994679">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.747058799734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.747058799734"
+                    Point2="0,30.747058799734"
+                    Point3="-4,30.747058799734" />
+                  <mssgle:LineSegment
+                    End="-78.5428572751428,30.747058799734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.5428572751428,30.747058799734"
+                    Point2="-82.5428572751428,30.747058799734"
+                    Point3="-82.5428572751428,34.747058799734" />
+                  <mssgle:LineSegment
+                    End="-82.5428572751428,53.9941175994679" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-64.5540067625714,35.747058799734,46.56515625,9.451171875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\divide the Disney princesses.Paths[Not drippy]"
+          TopLeft="386.609524335626,193.776470454847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128.276190863925,60.8705881454747"
+              Start="0,0"
+              End="128.276190863925,53.3705881454747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6228394152371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6228394152371"
+                    Point2="0,24.6228394152371"
+                    Point3="4,24.6228394152371" />
+                  <mssgle:LineSegment
+                    End="124.276190863925,24.6228394152371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124.276190863925,24.6228394152371"
+                    Point2="128.276190863925,24.6228394152371"
+                    Point3="128.276190863925,28.6228394152371" />
+                  <mssgle:LineSegment
+                    End="128.276190863925,53.3705881454747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="40.5061618382124,29.6228394152371,47.2638671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\divide the Disney princesses\princesses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\divide the Disney princesses\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

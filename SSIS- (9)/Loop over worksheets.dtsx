@@ -1,0 +1,533 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/21/2017 9:31:58 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUMPH"
+  DTS:CreatorName="WISEOWL\Andy.Brown"
+  DTS:DTSID="{5A14953A-7E7A-44CE-A16D-1AC0B31FD6AB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Loop over worksheets"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{9B3726F6-9796-4800-8B8B-1207A4E04199}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{110D6CC1-A32A-4BAD-881A-21495A1B1D1E}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\ajb\Shopping.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Getting list of worksheets]"
+      DTS:CreationName="ADO.NET:OLEDB"
+      DTS:DTSID="{51F7F498-E5F1-4C61-B7DC-96FD22D8930C}"
+      DTS:ObjectName="Getting list of worksheets">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=C:\ajb\Shopping.xlsx;Provider=Microsoft.ACE.OLEDB.12.0;Extended Properties=&quot;Excel 12.0;HDR=YES;&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F06C08C9-3806-4D62-BC83-E20B79300B6D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SheetName">
+      <DTS:VariableValue
+        DTS:DataType="8">January$</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete any old data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{461ECC86-DDBE-4C40-BBE0-C718EEB2DD4B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete any old data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{548C867D-C15A-45F2-BD64-686786072B0E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE AdoShopping" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach ADONET Schema Rowset Enumerator"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{011DE282-DDEE-4E68-AFBC-D3E668432154}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach ADONET Schema Rowset Enumerator">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachSchemaRowsetEnumerator"
+        DTS:DTSID="{FF3E35C6-92DB-4E31-808D-2FE1C2DFF673}"
+        DTS:ObjectName="{FF3E35C6-92DB-4E31-808D-2FE1C2DFF673}">
+        <DTS:ObjectData>
+          <FEESchemaRowset
+            Connection="Getting list of worksheets"
+            Schema="c8b52229-5cf3-11ce-ade5-00aa0044773d" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{AA4D521D-12F4-4D83-BD7A-4C6A5D2BDDA2}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Import this worksheet's data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Each worksheet in turn"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">User::SheetName</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">1</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Shopping date]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Shopping date]"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Shopping date]"
+                          name="Shopping date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Supermarket]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Supermarket]"
+                          length="255"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Supermarket]"
+                          name="Supermarket"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Spending]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Spending]"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Spending]"
+                          name="Spending"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Shopping date]"
+                          dataType="date"
+                          name="Shopping date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Supermarket]"
+                          dataType="wstr"
+                          length="255"
+                          name="Supermarket" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].ExternalColumns[Spending]"
+                          dataType="r8"
+                          name="Spending" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Shopping date]"
+                          dataType="date"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Shopping date]"
+                          name="Shopping date" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Supermarket]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Supermarket]"
+                          name="Supermarket" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Spending]"
+                          dataType="r8"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[Spending]"
+                          name="Spending" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="The final SQL Server table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AdoShopping]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Connections[OleDbConnection]"
+                      connectionManagerID="{548C867D-C15A-45F2-BD64-686786072B0E}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[__sql2016.Wistful]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].Columns[Spending]"
+                          cachedDataType="r8"
+                          cachedName="Spending"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[Spending]"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Spending]" />
+                        <inputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].Columns[Supermarket]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Supermarket"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[ShopName]"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Supermarket]" />
+                        <inputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].Columns[Shopping date]"
+                          cachedDataType="date"
+                          cachedName="Shopping date"
+                          externalMetadataColumnId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[ShopDate]"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output].Columns[Shopping date]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[ShopName]"
+                          dataType="wstr"
+                          length="255"
+                          name="ShopName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[ShopDate]"
+                          dataType="dbDate"
+                          name="ShopDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input].ExternalColumns[Spending]"
+                          dataType="numeric"
+                          name="Spending"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data.Paths[Excel Source Output]"
+                  endId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{732F4DF8-52E2-477D-9C31-E11BA4C64CF4}"
+          DTS:ObjectName="{732F4DF8-52E2-477D-9C31-E11BA4C64CF4}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::SheetName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9AA3C7F9-FEBB-4FB2-A78A-AFE7A6E3359A}"
+      DTS:From="Package\Delete any old data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach ADONET Schema Rowset Enumerator" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Delete any old data"
+          TopLeft="68.0000011580331,15.2941178615531" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data"
+          TopLeft="40.8000010899135,40.8470611915457" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="296.8,137.6"
+          Size="296.8,180.8"
+          Id="Package\Foreach ADONET Schema Rowset Enumerator"
+          TopLeft="16.5714288536384,84.4235305957728" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="153.200001158033,56.8941178615531">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.7714276956053,27.5294127342197"
+              Start="0,0"
+              End="11.7714276956053,20.0294127342197">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.76470636710987" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.76470636710987"
+                    Point2="0,13.7647063671099"
+                    Point3="4,13.7647063671099" />
+                  <mssgle:LineSegment
+                    End="7.7714276956053,13.7647063671099" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.7714276956053,13.7647063671099"
+                    Point2="11.7714276956053,13.7647063671099"
+                    Point3="11.7714276956053,17.7647063671099" />
+                  <mssgle:LineSegment
+                    End="11.7714276956053,20.0294127342197" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn"
+          TopLeft="33.7142858115994,16.5176472904773" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table"
+          TopLeft="29.1428571623199,81.3647070234622" />
+        <EdgeLayout
+          Id="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data.Paths[Excel Source Output]"
+          TopLeft="128.62857148696,58.1176472904773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.247059732985"
+              Start="0,0"
+              End="0,15.747059732985">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.747059732985" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\Each worksheet in turn">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach ADONET Schema Rowset Enumerator\Import this worksheet's data\The final SQL Server table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

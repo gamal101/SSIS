@@ -1,0 +1,1353 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/16/2024 5:09:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-T4KINTS"
+  DTS:CreatorName="DESKTOP-T4KINTS\Ahmed Sayed"
+  DTS:DTSID="{973F6AE8-EA8C-4FDD-AD7A-04684857911A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{1FD3301A-817F-4EEF-A1FA-4E0AD4E29ADE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C197B64B-CCA2-4A29-B101-AEA228DE1EC5}"
+      DTS:ObjectName="DESKTOP-T4KINTS\SQLEXPRESS.Wistful">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-T4KINTS\SQLEXPRESS;Initial Catalog=Wistful;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{C197B64B-CCA2-4A29-B101-AEA228DE1EC5}DESKTOP-T4KINTS\SQLEXPRESS.Wistful;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{74A184E8-1A66-48F2-9D5D-CB355786ED4B}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (19)\TV programs.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{4855DFBE-E354-4360-AC81-2A5490E34819}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Jamal's\ROWAD MASR\wiseowl exercises\SSIS- (19)\TV programs.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TV program"
+              DTS:DTSID="{698AF46B-B04B-4069-9794-F58FEE489D20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Wise Owl rating"
+              DTS:DTSID="{5B3B486E-AFFB-4707-ADBA-3CCEA0E6BD7A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Program Rating"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AC139D3C-D8C8-4669-B694-9ED435497937}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Program Rating"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Program Rating\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input].Columns[Program]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Program"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Program]" />
+                    <inputColumn
+                      refId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input].Columns[Ratingg]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ratingg"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Ratingg]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ratingg]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ratingg]"
+                      name="Copy of Ratingg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Ratingg]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Programm]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Programm]"
+                      name="Programm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Program]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Data Conversion 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input].Columns[Program]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Program"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Program]" />
+                    <inputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input].Columns[Ratingg]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ratingg"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Ratingg]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of Ratingg]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of Ratingg]"
+                      name="Copy of Ratingg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Ratingg]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Programm]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Programm]"
+                      name="Programm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Program]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Programs from Excel$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Program Rating\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Program]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].ExternalColumns[Program]"
+                      length="255"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Program]"
+                      name="Program"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Rating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      length="255"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Rating]"
+                      name="Rating"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].ExternalColumns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      name="Program" />
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rating" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[Program]"
+                      name="Program" />
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[Rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[Rating]"
+                      name="Rating" />
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Program Rating\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[TV program]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TV program]"
+                      length="50"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[TV program]"
+                      name="TV program"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[Wise Owl rating]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Wise Owl rating]"
+                      length="50"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[Wise Owl rating]"
+                      name="Wise Owl rating"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TV program]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TV program" />
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Wise Owl rating]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Wise Owl rating" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Import the 4 programs"
+              componentClassID="Microsoft.RowSampling"
+              contactInfo="Row Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Randomly samples a specific number of rows from an input data flow. For example, use it randomly select products to feature on your Web site."
+              name="Import the 4 programs">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of rows in the sample."
+                  expressionType="Notify"
+                  name="SamplingValue">4</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the seed for the random number generator."
+                  name="SamplingSeed">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Program Rating\Import the 4 programs.Inputs[Row Sampling Input 1]"
+                  name="Row Sampling Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Inputs[Row Sampling Input 1].Columns[TV program]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TV program"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[TV program]" />
+                    <inputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Inputs[Row Sampling Input 1].Columns[Wise Owl rating]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Wise Owl rating"
+                      lineageId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[Wise Owl rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output]"
+                  name="Sampling Selected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">true</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Program]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Program]"
+                      name="Program">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[TV program]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Ratingg]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output].Columns[Ratingg]"
+                      name="Ratingg">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[Wise Owl rating]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Unselected Output]"
+                  name="Sampling Unselected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">false</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Unselected Output].Columns[Program]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Unselected Output].Columns[Program]"
+                      name="Program">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[TV program]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Unselected Output].Columns[Ratingg]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Unselected Output].Columns[Ratingg]"
+                      name="Ratingg">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Flat File Source.Outputs[Flat File Source Output].Columns[Wise Owl rating]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Import the 6 programs"
+              componentClassID="Microsoft.RowSampling"
+              contactInfo="Row Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Randomly samples a specific number of rows from an input data flow. For example, use it randomly select products to feature on your Web site."
+              name="Import the 6 programs">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of rows in the sample."
+                  expressionType="Notify"
+                  name="SamplingValue">6</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the seed for the random number generator."
+                  name="SamplingSeed">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Program Rating\Import the 6 programs.Inputs[Row Sampling Input 1]"
+                  name="Row Sampling Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Inputs[Row Sampling Input 1].Columns[Program]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Program"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Program]" />
+                    <inputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Inputs[Row Sampling Input 1].Columns[Rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rating"
+                      lineageId="Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output]"
+                  name="Sampling Selected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">true</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Program]"
+                      name="Program">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Program]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Ratingg]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output].Columns[Ratingg]"
+                      name="Ratingg">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Rating]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Unselected Output]"
+                  name="Sampling Unselected Output">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">false</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Unselected Output].Columns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Unselected Output].Columns[Program]"
+                      name="Program">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Program]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Unselected Output].Columns[Ratingg]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Unselected Output].Columns[Ratingg]"
+                      name="Ratingg">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Input column lineage ID"
+                          name="InputColumnLineageID">#{Package\Program Rating\Excel Source.Outputs[Excel Source Output].Columns[Rating]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TvPrograms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Program Rating\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-T4KINTS\SQLEXPRESS.Wistful]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Ratingg]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Ratingg"
+                      externalMetadataColumnId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwlRating]"
+                      lineageId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Copy of Ratingg]" />
+                    <inputColumn
+                      refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Programm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Programm"
+                      externalMetadataColumnId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProgramName]"
+                      lineageId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Programm]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProgramId]"
+                      dataType="i4"
+                      name="ProgramId" />
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProgramName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="ProgramName" />
+                    <externalMetadataColumn
+                      refId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwlRating]"
+                      dataType="ui1"
+                      name="OwlRating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Program Rating\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Program Rating\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Program Rating\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Program Rating\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Union All.Inputs[Union All Input 1].Columns[Copy of Ratingg]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Ratingg"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ratingg]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Copy of Ratingg]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Program Rating\Union All.Inputs[Union All Input 1].Columns[Programm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Programm"
+                      lineageId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output].Columns[Programm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Programm]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Program Rating\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Program Rating\Union All.Inputs[Union All Input 2].Columns[Copy of Ratingg]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Ratingg"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of Ratingg]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Copy of Ratingg]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Program Rating\Union All.Inputs[Union All Input 2].Columns[Programm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Programm"
+                      lineageId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output].Columns[Programm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Programm]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Program Rating\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Program Rating\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Copy of Ratingg]"
+                      dataType="i8"
+                      lineageId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Copy of Ratingg]"
+                      name="Copy of Ratingg" />
+                    <outputColumn
+                      refId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Programm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Program Rating\Union All.Outputs[Union All Output 1].Columns[Programm]"
+                      name="Programm" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Program Rating.Paths[Data Conversion Output]"
+              endId="Package\Program Rating\Union All.Inputs[Union All Input 1]"
+              name="Data Conversion Output"
+              startId="Package\Program Rating\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Data Conversion Output1]"
+              endId="Package\Program Rating\Union All.Inputs[Union All Input 2]"
+              name="Data Conversion Output"
+              startId="Package\Program Rating\Data Conversion 1.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Excel Source Output]"
+              endId="Package\Program Rating\Import the 6 programs.Inputs[Row Sampling Input 1]"
+              name="Excel Source Output"
+              startId="Package\Program Rating\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Flat File Source Output]"
+              endId="Package\Program Rating\Import the 4 programs.Inputs[Row Sampling Input 1]"
+              name="Flat File Source Output"
+              startId="Package\Program Rating\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Sampling Selected Output]"
+              endId="Package\Program Rating\Data Conversion 1.Inputs[Data Conversion Input]"
+              name="Sampling Selected Output"
+              startId="Package\Program Rating\Import the 6 programs.Outputs[Sampling Selected Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Sampling Selected Output1]"
+              endId="Package\Program Rating\Data Conversion.Inputs[Data Conversion Input]"
+              name="Sampling Selected Output"
+              startId="Package\Program Rating\Import the 4 programs.Outputs[Sampling Selected Output]" />
+            <path
+              refId="Package\Program Rating.Paths[Union All Output 1]"
+              endId="Package\Program Rating\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Program Rating\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Program Rating"
+          TopLeft="318.333315940368,118.733332507677" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Program Rating">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Program Rating\Excel Source"
+          TopLeft="536.666637344494,65.8666662086381" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Program Rating\Flat File Source"
+          TopLeft="224.166654418741,60.6666662447983" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Program Rating\Import the 6 programs"
+          TopLeft="522.49997145186,155.133332254556" />
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Excel Source Output]"
+          TopLeft="609.583304398177,107.466666208638">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6666660459175"
+              Start="0,0"
+              End="0,40.1666660459175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1666660459175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Program Rating\Import the 4 programs"
+          TopLeft="208.333321950502,150.799998951356" />
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Flat File Source Output]"
+          TopLeft="299.049988184621,102.266666244798">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.5333327065574"
+              Start="0,0"
+              End="0,41.0333327065574">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.0333327065574" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Program Rating\Data Conversion"
+          TopLeft="224.166654418741,241.799998318553" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Program Rating\Data Conversion 1"
+          TopLeft="530.83330432988,240.066664997273" />
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Sampling Selected Output]"
+          TopLeft="612.66663789087,196.733332254556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3333327427175"
+              Start="0,0"
+              End="0,35.8333327427175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8333327427175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.94205078125,12.0851234026087,115.8841015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Sampling Selected Output1]"
+          TopLeft="300.249988184621,192.399998951356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3999993671974"
+              Start="0,0"
+              End="0,41.8999993671974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8999993671974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.94205078125,15.1184567148487,115.8841015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Program Rating\Union All"
+          TopLeft="379.166645949914,347.53333091663" />
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Data Conversion Output]"
+          TopLeft="302.166654418741,283.399998318553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118.333324864507,64.1333325980768"
+              Start="0,0"
+              End="118.333324864507,56.6333325980768">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.9736837751771" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.9736837751771"
+                    Point2="0,37.9736837751771"
+                    Point3="4,37.9736837751771" />
+                  <mssgle:LineSegment
+                    End="114.333324864507,37.9736837751771" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.333324864507,37.9736837751771"
+                    Point2="118.333324864507,37.9736837751771"
+                    Point3="118.333324864507,41.9736837751771" />
+                  <mssgle:LineSegment
+                    End="118.333324864507,56.6333325980768" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Data Conversion Output1]"
+          TopLeft="612.83330432988,281.666664997273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-154.999991713299,65.8666659193569"
+              Start="0,0"
+              End="-154.999991713299,58.3666659193569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9999995575139" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.9999995575139"
+                    Point2="0,38.9999995575139"
+                    Point3="-4,38.9999995575139" />
+                  <mssgle:LineSegment
+                    End="-150.999991713299,38.9999995575139" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-150.999991713299,38.9999995575139"
+                    Point2="-154.999991713299,38.9999995575139"
+                    Point3="-154.999991713299,42.9999995575139" />
+                  <mssgle:LineSegment
+                    End="-154.999991713299,58.3666659193569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Program Rating\OLE DB Destination"
+          TopLeft="354.166647315854,444.13333079007" />
+        <EdgeLayout
+          Id="Package\Program Rating.Paths[Union All Output 1]"
+          TopLeft="439.466646632884,389.13333091663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.9999998734396"
+              Start="0,0"
+              End="0,47.4999998734396">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.4999998734396" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Program Rating\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Program Rating\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
